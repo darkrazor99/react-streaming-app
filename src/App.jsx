@@ -42,7 +42,6 @@ const App = () => {
         : `${API_BASE_URL}/discover/movie?sort_by=popularity.desc`;
 
       const response = await fetch(endpoint, API_OPTIONS);
-
       if (!response.ok) {
         throw new Error('Failed to fetch movies')
       }
@@ -76,7 +75,6 @@ const App = () => {
 
       const movies = await getTrendingMovies();
       setTrendingMovies(movies);
-      
 
     } catch (error) {
       console.error(`Error fetching Trending movies: ${error}`);
@@ -111,7 +109,7 @@ const App = () => {
         {isTrendingLoading ? (
           <Spinner />
         ) : trendingErrorMessage ? (
-          <p className='text-red-500'>{trendingErrorMessage}</p>
+          <p className='text-red-500 mt-[40px] mb-[40px]'>{trendingErrorMessage}</p>
         ) : trendingMovies.length > 0 && (
           <section className='trending'>
             <h2>Trending Movies</h2>
@@ -132,7 +130,7 @@ const App = () => {
           {isLoading ? (
             <Spinner />
           ) : errorMessage ? (
-            <p className='text-red-500'>{errorMessage}</p>
+            <p className='text-red-500 mt-[40px] mb-[40px]'>{errorMessage}</p>
           ) : (
             <ul>
               {movieList.map((movie) => (
